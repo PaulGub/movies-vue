@@ -15,6 +15,8 @@
         <input type="date" id="directorBirthDate" v-model="newFilm.director.birthDate" required />
         <label for="genre">Genre :</label>
         <input type="text" id="genre" v-model="newFilm.genre" required />
+        <label for="poster">Affiche du film :</label>
+        <input type="text" id="poster" v-model="newFilm.poster" required />
         <button type="submit">Ajouter</button>
     </form>
 </template>
@@ -32,22 +34,16 @@ export default {
                     nationality: '',
                     birthDate: ''
                 },
-                genre: ''
+                genre: '',
+                poster: ''
             }
         };
     },
     methods: {
         addFilm() {
-            // Étape 1 : Obtenir les films existants depuis le stockage local
             const films = JSON.parse(localStorage.getItem('films')) || [];
-
-            // Étape 2 : Ajouter le nouveau film à la liste
             films.push(this.newFilm);
-
-            // Étape 3 : Sauvegarder la liste mise à jour dans le stockage local
             localStorage.setItem('films', JSON.stringify(films));
-
-            // Vider les champs du formulaire après avoir ajouté le film
             this.newFilm = {
                 title: '',
                 releaseYear: '',
@@ -57,10 +53,9 @@ export default {
                     nationality: '',
                     birthDate: ''
                 },
-                genre: ''
+                genre: '',
+                poster: ''
             };
-
-            // Naviguer vers la page d'accueil après avoir ajouté le film
             this.$router.push('/');
         }
     }

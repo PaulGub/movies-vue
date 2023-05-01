@@ -1,6 +1,7 @@
 <template>
-    <div class="card">
+    <div className="card">
         <h2>{{ title }}</h2>
+        <img :src="poster" alt="Affiche du film"/>
         <p><strong>Année de sortie :</strong> {{ releaseYear }}</p>
         <p><strong>Langue :</strong> {{ language }}</p>
         <p><strong>Réalisateur :</strong> {{ director.name }} ({{ director.nationality }})</p>
@@ -8,6 +9,7 @@
         <p><strong>Genre :</strong> {{ genre }}</p>
     </div>
 </template>
+
 <script>
 export default {
     props: {
@@ -28,6 +30,10 @@ export default {
             required: true
         },
         genre: {
+            type: String,
+            required: true
+        },
+        poster: {
             type: String,
             required: true
         }
@@ -67,5 +73,10 @@ strong {
 .card:hover {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
+}
+
+img {
+    margin-bottom: 10px;
+    max-width: 100%;
 }
 </style>
